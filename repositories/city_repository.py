@@ -22,7 +22,7 @@ def select_all():
     
     for row in results:
         visited = True if row['visited'] == 1 else False
-        country = country_repository.select(row['country_id']).name
+        country = country_repository.select(row['country_id'])
         city = City(row['name'], country, visited, row['id'])
         cities.append(city)
     return cities
@@ -35,7 +35,7 @@ def select(id):
     
     if city is not None:
         visited = True if result['visited'] == 1 else False
-        country = country_repository.select(result['country_id']).name
+        country = country_repository.select(result['country_id'])
         city = City (result['name'], country, visited, result ['id'])
     return city
 

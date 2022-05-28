@@ -26,8 +26,8 @@ def select_all():
 
 def select(id):
     country = None
-    sql = "SELECT * FROM countries where name = ?"
-    values = [country.id]
+    sql = "SELECT * FROM countries where id = ?"
+    values = [id]
     results = run_sql(sql, values)[0]
     
     if country is not None:
