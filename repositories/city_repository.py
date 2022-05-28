@@ -21,9 +21,9 @@ def select_all():
     results = run_sql(sql)
     
     for row in results:
-        visited = True if results['visited'] == 1 else False
+        visited = True if row['visited'] == 1 else False
         country = country_repository.select(row['country_id']).name
-        city = City(row['name'],country, visited, row['id'])
+        city = City(row['name'], country, visited, row['id'])
         cities.append(city)
     return cities
 

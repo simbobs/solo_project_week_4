@@ -10,7 +10,7 @@ app.register_blueprint(countries_blueprint)
 
 @app.route('/')
 def home():
-    return "Simona's first solo project"
+    return render_template("index.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

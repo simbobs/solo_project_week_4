@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2> All Countries </h2>
+
+
+
+    <div>
+        <div>
+            <h3>Countries I've Been To</h3>
+                
+                
+                <div>
+                    {% for country in all_countries %}
+                    {% if country.visited == True %}
+
+                    <ul>
+                        <li><a href="/countries/{{ country.id }}"> {{country.name}}</a></li>
+                    </ul>
+                    
+                    
+                    {% else %}
+                        <p>You haven't been anywhere yet!</p>
+                    {% endif %}
+                    {% endfor%}
+                </div>
+
+                
+                
+        </div>
+        <div>
+            
+            <h3>Countries I Want To Visit</h3>
+            {% for country in all_countries %}
+            {% if country.visited == False %}
+            <div>
+                
+                <ul>
+                    <li><a href="/countries/{{ country.id }}"> {{country.name}}</a></li>
+                </ul>
+
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    
+
+    </div>
+
+    {% endblock %}
+
+
+
+
+
+
+

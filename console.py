@@ -30,8 +30,10 @@ city_repository.save(city3)
 city4= City("Bologna", country2)
 city_repository.save(city4)
 
+country2.mark_country_visited
 
-country_repository.cities(country1)
+
+print(country_repository.cities(country1)[0].name)
 
 country_repository.select_all()
 

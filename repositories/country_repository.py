@@ -19,14 +19,15 @@ def select_all():
     results = run_sql(sql)
     
     for row in results:
-        country = Country(row['name'], row['visited'], row['id'])
+        visited = True if row['visited'] == 1 else False
+        country = Country(row['name'], visited, row['id'])
         countries.append(country)
     return countries
 
 def select(id):
     country = None
-    sql = "SELECT * FROM countries where id = ?"
-    values = [id]
+    sql = "SELECT * FROM countries where name = ?"
+    values = [country.id]
     results = run_sql(sql, values)[0]
     
     if country is not None:
