@@ -7,12 +7,13 @@ from models.country import Country
 
 
 def save(country):
-    sql = "INSERT INTO countries (name, visited) VALUES (?, ?) RETURNING id"
+    sql = "INSERT INTO countries (name, visited) VALUES (?, ?) RETURNING *"
     values = [country.name, country.visited]
     results = run_sql(sql, values)
     id = results[0]['id']
     country.id = id
     return country
+
 
 def select_all():
     countries = []
@@ -29,11 +30,11 @@ def select(id):
     country = None
     sql = "SELECT * FROM countries WHERE id = ?"
     values = [id]
-    result = run_sql(sql, values)[0]
+    results = run_sql(sql, values)[0]
     
     if country is not None:
-        visited = True if result['visited'] == 1 else False
-        country = Country(result['name'], visited, result['id'])
+        visited = True if results['visited'] == 1 else False
+        country = Country(results['name'], visited, results['id'])
     return country
 
 def update(country):

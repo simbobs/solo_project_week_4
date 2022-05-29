@@ -35,7 +35,7 @@ country2.mark_country_visited
 
 list_of_cities = country_repository.cities(country1)
 
-print(country2.id)
+
 
 country_repository.select_all()
 

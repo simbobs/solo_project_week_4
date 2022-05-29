@@ -25,9 +25,9 @@ def add_city():
     visited = bool(int(request.form['visited']))
     
     country = country_repository.select(country_id)
-    city = City(city_name, country.name, visited)
+    new_city = City(city_name, country, visited)
     
-    city_repository.save(city)
+    city_repository.save(new_city)
     return redirect("/cities")
     
     
