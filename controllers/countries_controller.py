@@ -31,6 +31,7 @@ def add_country():
     country_visited = bool(int(request.form['visited']))
     
     new_country = Country(country_name, country_visited)
+    country_repository.save(new_country)
     
     return redirect("/countries")
     

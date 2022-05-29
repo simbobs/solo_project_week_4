@@ -2,20 +2,21 @@
 
 {% block content %}
 
-<div>
-    <label for="country">Country</label>
-    <input type="text" id="country" name="name" placeholder ="country" required autofocus>
-</div>
+<form action="/countries" method = "POST">
+    <div>
+        <label for="country">Country</label>
+        <input type="text" id="country" name="name" placeholder ="country" required autofocus>
+    </div>
 
-<div>
-    <label for="visited">Visited</label>
-    <select id="visited" name ="visited">
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-    </select>
-</div>
+    <div>
+        <label for="visited">Visited</label>
+            <select id="visited" name ="visited">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+    </div>
 
-<button type=""submit>Add</button>
+    <button type="submit">Add</button>
 
-
+</form>
 {% endblock %}
