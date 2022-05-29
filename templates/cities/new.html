@@ -2,6 +2,33 @@
 
 {% block content %}
 
-<p> THIS IS WHERE YOUR NEW CITY FORM WILL GO</p>
+<form action="/cities" method="POST">
+    <div>
+        <label for="city">City</label>
+        <input type="text" id="city" name="name" placeholder="city" required autofocus>
+    </div>
+
+    <div>
+        <label for="country">Country</label>
+        <select id="country" name="country_id">
+            <!-- to populate the drop down list -->
+            {% for country in all_countries %}
+            <option value="{{country.id}}">{{country.name}}</option>
+            {% endfor %}
+
+        </select>
+    </div>
+
+    <div>
+        <label for="visited">Visited</label>
+        <select id="visited" name ="visited">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+    </div>
+    <button type=""submit>Add</button>
+</form>
+
+
 
 {% endblock %}

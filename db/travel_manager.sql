@@ -15,7 +15,7 @@ CREATE TABLE cities (
     visited BOOLEAN DEFAULT FALSE,
     country_id INTEGER NOT NULL,
         FOREIGN KEY (country_id)
-            REFERENCES countries (id)
+            REFERENCES countries(id)
         
 );
 

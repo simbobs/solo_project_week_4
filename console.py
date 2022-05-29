@@ -16,7 +16,7 @@ country1 = Country ("Scotland")
 country_repository.save(country1)
 
 country2 = Country ("Italy")
-country_repository.save(country2)
+country2 =country_repository.save(country2)
 
 city1 = City("Glasgow", country1)
 city_repository.save(city1)
@@ -33,7 +33,9 @@ city_repository.save(city4)
 country2.mark_country_visited
 
 
-print(country_repository.cities(country1)[0].name)
+list_of_cities = country_repository.cities(country1)
+
+print(country2.id)
 
 country_repository.select_all()
 

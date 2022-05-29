@@ -9,10 +9,11 @@ from models.country import Country
 import repositories.country_repository as country_repository
 
 def save(city):
-    sql = "INSERT INTO cities (name, visited, country_id) VALUES (?, ?, ?) RETURNING ID"
+    sql = "INSERT INTO cities (name, visited, country_id) VALUES (?, ?, ?) RETURNING id"
     values = [city.name, city.visited, city.country.id]
     results = run_sql(sql, values)
-    city.id = results[0]['id']
+    id = results[0]['id']
+    city.id = id
     return city
 
 def select_all():
@@ -29,13 +30,13 @@ def select_all():
 
 def select(id):
     city = None
-    sql = "SELECT * FROM cities where id = ?"
-    values = [id]
-    result = run_sql(sql, values)
+    sql = "SELECT * FROM cities WHERE id = ?"
+    values =[id]
+    result = run_sql(sql, values)[0]
     
     if city is not None:
         visited = True if result['visited'] == 1 else False
-        country = country_repository.select(result['country_id'])
+        country = country_repository.select(result['country_id']).name
         city = City (result['name'], country, visited, result ['id'])
     return city
 

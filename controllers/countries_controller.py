@@ -12,12 +12,12 @@ def countries():
     countries = country_repository.select_all()
     return render_template("countries/index.html", all_countries = countries)
 
-@countries_blueprint.route("/countries/<name>", methods = ['GET'])
-def show_country(name):
-    country = country_repository.select(name.id)
-    cities = country_repository.cities(country)
+@countries_blueprint.route("/countries/<id>", methods = ['GET'])
+def show_country(id):
+    country = country_repository.select(id)
+    all_cities = country_repository.cities(country)
     
-    return render_template("countries/show.html", country = country, cities = cities)
+    return render_template("countries/show.html", country = country, all_cities = all_cities)
 
 @countries_blueprint.route("/countries/new", methods = ["GET"])
 def new_country():
