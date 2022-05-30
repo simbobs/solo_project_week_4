@@ -44,7 +44,7 @@ def edit_city(id):
     
     return render_template("cities/edit.html", city = city, all_countries = countries)
 
-@cities_blueprint.route("/cities/<id>/edit", methods =["POST"])
+@cities_blueprint.route("/cities/<id>", methods =["POST"])
 def update_city(id):
     city_name = request.form['name']
     country_id = request.form['country_id']
