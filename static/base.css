@@ -1,0 +1,84 @@
+header {
+    background-color: blanchedalmond;
+    color: rgb(157, 113, 198);
+    font-family: 'Coming Soon', cursive;
+    
+
+}
+
+/* #Headline {
+    display: flex;
+    justify-content: center;
+   
+} */
+
+#Headline > h1 {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.menu {
+
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;  
+
+}
+
+.menu li a {
+    text-decoration: none;
+    color: rgb(157, 113, 198);
+
+}
+
+.container #trackme > h2 > a {
+    color: rgb(157, 113, 198);
+    font-family: 'Coming Soon', cursive;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15%;
+    padding-bottom: 35%;
+}
+
+.container .headings {
+    color: rgb(157, 113, 198);
+    font-family: 'Coming Soon', cursive;
+}
+
+.container .lists li a {
+    text-decoration:none;
+    color: rgb(157, 113, 198);
+    font-family: 'Coming Soon', cursive;
+}
+
+.container .lists li {
+    text-decoration:none;
+    color: rgb(157, 113, 198);
+    font-family: 'Coming Soon', cursive;
+}
+
+.container .lists {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container .flexme {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    padding-top: 5%;
+
+}
+
+
+
+
+
+

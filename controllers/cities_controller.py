@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, Blueprint
+from models import city
 
 import repositories.city_repository as city_repository
 import repositories.country_repository as country_repository 
@@ -9,6 +10,7 @@ cities_blueprint = Blueprint("cities", __name__)
 @cities_blueprint.route("/cities")
 def cities():
     cities = city_repository.select_all()
+   
     return render_template("cities/index.html", all_cities = cities)
 
 # this is a get because we jsut want to get the page with the form on it
@@ -28,7 +30,7 @@ def add_city():
     new_city = City(city_name, country, visited)
     
     city_repository.save(new_city)
-    return redirect("/cities")
+    return redirect(f"/countries/{country_id}")
 
 @cities_blueprint.route("/cities/<id>", methods = ["GET"])
 def show_city(id):
@@ -55,5 +57,10 @@ def update_city(id):
     
     city_repository.update(selected_city)
     
+    return redirect("/cities")
+
+@cities_blueprint.route("/cities/<id>/delete", methods = ["POST"])
+def delete_city(id):
+    city_repository.delete(id)
     return redirect("/cities")
     

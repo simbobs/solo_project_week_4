@@ -54,6 +54,15 @@ def update_country(id):
     
     return redirect("/countries")
 
+# @countries_blueprint.route("countries/<id>/addcity", methods = ["GET"])
+# def add_city_to_country():
+#     country = country_repository.select(id)
+#     all_countries = country_repository.select_all()
+#     all_cities = city_repository.select_all()
+    
+
+
+
 
     
     

@@ -2,13 +2,17 @@
 
 {% block content %}
 
-<h2>{{country.name}}</h2>
-    <section>
+<h2 class="headings">{{country.name}}</h2>
+<form action="/cities/new", method = GET>
+    <button>Add New City</button>
+</form>
+
+    <section class="flexme">
         <div>
-            <h3>Visited</h3>
+            <h3 class = "headings">Visited</h3>
                 {% for city in cities %}
                 {% if city.visited == True %}
-                    <ul>
+                    <ul class="lists">
                         <li><a href="/cities/{{city.id}}">{{city.name}}</a></li>
                     </ul>
                 {% endif %}
@@ -17,11 +21,11 @@
         
 
         <div>
-            <h3>Bucket List</h3>
+            <h3 class = "headings">Bucket List</h3>
                 {% for city in cities %}
                 {% if city.visited == False %}  
                 
-                <ul>
+                <ul class="lists">
                     <li><a href="/cities/{{city.id}}">{{city.name}}</a></li>
                 </ul>
                 {% endif %}

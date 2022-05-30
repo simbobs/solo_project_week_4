@@ -1,27 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2> All Countries </h2>
+<!-- <h2 class = "headings"> All Countries </h2> -->
 
 
 
-    <div>
+    <div class = "flexme">
         <div>
-            <h3>Countries I've Been To</h3>
+            <h3 class = "headings">Countries I've Been To</h3>
                 
                 
                 <div>
                     {% for country in all_countries %}
                     {% if country.visited == True %}
 
-                    <ul>
+                    <ul class = "lists">
                         <li><a href="/countries/{{ country.id }}"> {{country.name}}</a></li>
-                        <li><a href="/countries/{{country.id}}/edit">Edit</a></li>
+                        <li>
+                            <button><a href="/countries/{{country.id}}/edit">Edit</a></button>
+                        </li>
                     </ul>
+                    <!-- <button><a href="/countries/{{country.id}}/edit">Edit</a></button> -->
                     
                     
-                    {% else %}
-                        <p>You haven't been anywhere yet!</p>
+                
                     {% endif %}
                     {% endfor%}
                 </div>
@@ -31,14 +33,18 @@
         </div>
         <div>
             
-            <h3>Countries I Want To Visit</h3>
+            <h3 class = "headings">Countries I Want To Visit</h3>
             {% for country in all_countries %}
             {% if country.visited == False %}
             <div>
                 
-                <ul>
+                <ul class = "lists">
                     <li><a href="/countries/{{ country.id }}"> {{country.name}}</a></li>
+                    <li>
+                        <button><a href="/countries/{{country.id}}/edit">Edit</a></button>
+                    </li>
                 </ul>
+                
 
             </div>
             {% endif %}

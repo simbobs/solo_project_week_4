@@ -3,32 +3,54 @@
 {% block content %}
    
 
-<div>
-    <div>
-        <h2> Been There</h2>
-        {% for city in all_cities %}
-        {% if city.visited == True %}
-            <ul>
-                <li><a href="/cities/{{city.id}}">{{city.name}}</a></li>
-            </ul>
-        {% endif %}
-        {% endfor %}
-    </div>
+<div class = "flexme">
+    
+        
+       
+        <div>
+            <h2 class = "headings"> Been There</h2>
+            {% for city in all_cities %}
+            {% if city.visited == True %}
+                <ul class="lists">
+                    <li><a href="/cities/{{city.id}}">{{city.name}}</a>, {{city.country.name}}</li> 
+                    <li>
+                        <form action="/cities/{{city.id}}/delete" method ="POST">
+                            <button>
+                                <i class="fa fa-trash-o" style="font-size:24px"></i>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+                
+            {% endif %}
+            {% endfor %}
+        </div>
 
-    <div>
-        <h2>Bucket List</h2>
-        {% for city in all_cities %}
-        {% if city.visited == False %}
-            <ul>
-                <li><a href="/cities/{{city.id}}">{{city.name}}</a></li>
-            </ul>
-        {% endif %}
-        {% endfor %}
+        <div>
+            <h2 class = "headings">Bucket List</h2>
+            {% for city in all_cities %}
+            {% if city.visited == False %}
+                <ul class = "lists">
+                    <li><a href="/cities/{{city.id}}">{{city.name}}</a>, {{city.country.name}}</li>
+                    <li>
+                        <form action="/cities/{{city.id}}/delete" method ="POST">
+                            <button>
+                                <i class="fa fa-trash-o" style="font-size:24px"></i>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+                
+            {% endif %}
+            {% endfor %}
 
-    </div>
+        </div>
+
+   
         
 
 
 </div>
+
 
 {% endblock %}

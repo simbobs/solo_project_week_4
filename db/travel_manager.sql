@@ -19,3 +19,13 @@ CREATE TABLE cities (
         
 );
 
+-- extension stuff
+CREATE TABLE sights (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR,
+    comment TEXT,
+    city_id INTEGER NOT NULL,
+        FOREIGN KEY (city_id)
+            REFERENCES cities (id)
+)
+
