@@ -15,10 +15,12 @@ def countries():
 
 @countries_blueprint.route("/countries/<id>", methods = ['GET'])
 def show_country(id):
+    all_countries = country_repository.select_all()
     country = country_repository.select(id)
-    all_cities = country_repository.cities(country)
+    cities = country_repository.cities(country)
     
-    return render_template("countries/show.html", country = country, all_cities = all_cities)
+    
+    return render_template("countries/show.html", all_countries = all_countries, country = country, cities = cities)
 
 @countries_blueprint.route("/countries/new", methods = ["GET"])
 def new_country():

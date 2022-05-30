@@ -32,7 +32,7 @@ def select(id):
     values = [id]
     results = run_sql(sql, values)[0]
     
-    if country is not None:
+    if results is not None:
         visited = True if results['visited'] == 1 else False
         country = Country(results['name'], visited, results['id'])
     return country

@@ -32,16 +32,16 @@ def select(id):
     city = None
     sql = "SELECT * FROM cities WHERE id = ?"
     values =[id]
-    results = run_sql(sql, values)
+    results = run_sql(sql, values)[0]
     
-    if city is not None:
+    if results is not None:
         visited = True if results['visited'] == 1 else False
         country = country_repository.select(results['country_id']).name
         city = City (results['name'], country, visited, results ['id'])
     return city
 
 def update(city):
-    sql = "UPDATE cities SET ( name, visited, country_id) = ( ?, ?, ?) WHERE id = ?"
+    sql = "UPDATE cities SET (name, visited, country_id) = ( ?, ?, ?) WHERE id = ?"
     values = [city.name, city.visited, city.country.id, city.id]
     run_sql(sql, values)
     

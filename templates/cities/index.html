@@ -9,7 +9,7 @@
         {% for city in all_cities %}
         {% if city.visited == True %}
             <ul>
-                <li>{{city.name}}</li>
+                <li><a href="/cities/{{city.id}}">{{city.name}}</a></li>
             </ul>
         {% endif %}
         {% endfor %}
@@ -20,7 +20,7 @@
         {% for city in all_cities %}
         {% if city.visited == False %}
             <ul>
-                <li>{{city.name}}</li>
+                <li><a href="/cities/{{city.id}}">{{city.name}}</a></li>
             </ul>
         {% endif %}
         {% endfor %}

@@ -1,4 +1,35 @@
+{% extends "base.html" %}
 
-    <h2>{{country.name}}</h2>
+{% block content %}
 
+<h2>{{country.name}}</h2>
+    <section>
+        <div>
+            <h3>Visited</h3>
+                {% for city in cities %}
+                {% if city.visited == True %}
+                    <ul>
+                        <li><a href="/cities/{{city.id}}">{{city.name}}</a></li>
+                    </ul>
+                {% endif %}
+                {% endfor %}
+        </div> 
+        
 
+        <div>
+            <h3>Bucket List</h3>
+                {% for city in cities %}
+                {% if city.visited == False %}  
+                
+                <ul>
+                    <li><a href="/cities/{{city.id}}">{{city.name}}</a></li>
+                </ul>
+                {% endif %}
+                {% endfor %}
+        </div>
+        
+
+    
+</section>
+
+{% endblock %}
