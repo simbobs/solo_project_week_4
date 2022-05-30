@@ -5,10 +5,13 @@ from models import city
 
 from models.city import City
 from models.country import Country
+from models.sight import Sight
 
 import repositories.city_repository as city_repository
 import repositories.country_repository as country_repository
+import repositories.sight_repository as sight_repository
 
+sight_repository.delete_all()
 city_repository.delete_all()
 country_repository.delete_all()
 
@@ -31,6 +34,9 @@ city4= City("Bologna", country2)
 city_repository.save(city4)
 
 country2.mark_country_visited
+
+sight1 = Sight("Edinburgh Castle", "Very old, very cool", city2)
+sight_repository.save(sight1)
 
 
 list_of_cities = country_repository.cities(country1)

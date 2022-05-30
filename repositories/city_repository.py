@@ -5,8 +5,10 @@ from db.run_sql import run_sql
 
 from models.city import City
 from models.country import Country
+from models.sight import Sight
 
 import repositories.country_repository as country_repository
+import repositories.sight_repository as sight_repository
 
 def save(city):
     sql = "INSERT INTO cities (name, visited, country_id) VALUES (?, ?, ?) RETURNING *"
@@ -44,7 +46,17 @@ def update(city):
     sql = "UPDATE cities SET (name, visited, country_id) = ( ?, ?, ?) WHERE id = ?"
     values = [city.name, city.visited, city.country.id, city.id]
     run_sql(sql, values)
+
+def sights(city):
+    sights= []
+    sql = "SELECT * FROM sights WHERE city_id = ?"
+    values = [city.id]
+    results = run_sql(sql, values)
     
+    for row in results:
+        sight = Sight(row['name'], row['comment'], city.name, row['id'])
+        sights.append(sight)
+    return sights
 
 def delete(id):
     sql = "DELETE FROM cities WHERE id = ?"

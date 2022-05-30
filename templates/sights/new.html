@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/cities/newsight" method="POST">
+    <div>
+        <label for="sight">Attraction</label>
+        <input type="text" id="sight" name="name" placeholder="Attraction" required autofocus>
+    </div>
+
+    <div>
+        <label for="comment">Comments</label>
+        <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+    </div>
+
+    <div>
+        <label for="city">City</label>
+        <select id="city" name="city_id">
+            <!-- to populate the drop down list -->
+            {% for city in cities %}
+            <option value="{{city.id}}">{{city.name}}</option>
+            {% endfor %}
+
+        </select>
+    </div>
+
+    <div>
+        <label for="country">Country</label>
+        <select name="country_id" id="country">
+            <!-- {% for city in cities%} --> -->
+            {% for country in countries %}
+            <!-- {% if city.country_id == country.id%} -->
+            <option value="{{country.id}}">{{country.name}}</option>
+            <!-- {% endif %}
+            {% endfor %} -->
+            {% endfor %}
+        </select>
+    </div>
+
+    <button type="submit">Add</button>
+</form>
+
+
+
+{% endblock %}

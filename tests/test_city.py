@@ -10,10 +10,7 @@ class TestCity(unittest.TestCase):
     
     def test_city_has_country(self):
         self.assertEqual("Scotland", self.city1.country)
-        
-    # def test_city_has_comments(self):
-    #     self.assertEqual("Rubbish weather but people are nice", self.city1.comments)
-    
+
     def test_city_has_not_been_visited(self):
         self.assertEqual(False, self.city1.visited)
     

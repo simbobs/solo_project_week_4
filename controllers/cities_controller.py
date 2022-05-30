@@ -4,6 +4,8 @@ from models import city
 import repositories.city_repository as city_repository
 import repositories.country_repository as country_repository 
 from models.city import City
+from models.sight import Sight
+import repositories.sight_repository as sight_repository
 
 cities_blueprint = Blueprint("cities", __name__)
 
@@ -37,7 +39,11 @@ def show_city(id):
     cities = city_repository.select_all()
     city = city_repository.select(id)
     
-    return render_template("cities/show.html", cities = cities, city = city)
+    # extension, add sights
+    
+    sights = city_repository.sights(city)
+    
+    return render_template("cities/show.html", cities = cities, city = city, all_sights = sights)
 
 @cities_blueprint.route("/cities/<id>/edit", methods = ["GET"])
 def edit_city(id):
@@ -58,6 +64,9 @@ def update_city(id):
     city_repository.update(selected_city)
     
     return redirect("/cities")
+
+
+    
 
 @cities_blueprint.route("/cities/<id>/delete", methods = ["POST"])
 def delete_city(id):

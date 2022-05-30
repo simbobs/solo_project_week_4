@@ -1,3 +1,16 @@
-<h2>{{city.name}}</h2>
+{% extends "base.html" %}
 
+{% block content %}
+<h2>{{city.name}}</h2>
+<button><a href="/cities/newsight">Add New Attraction</a></button>
+{% for sight in all_sights %}
+
+<ul>
+<li>{{sight.name}}</li>
+<li>{{sight.comment}}</li>
+</ul>
+
+{% endfor %}
 <p><a href="/cities/{{city.id}}/edit">Edit</a></p>
+
+{% endblock %}
