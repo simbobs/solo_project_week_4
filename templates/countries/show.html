@@ -14,6 +14,16 @@
                 {% if city.visited == True %}
                     <ul class="lists">
                         <li><a href="/cities/{{city.id}}">{{city.name}}</a></li>
+                        <li>
+                            <button><a href="/cities/{{city.id}}/edit">Edit</a></button>
+                        </li>
+                        <li>
+                        <form action="/cities/{{city.id}}/delete" method ="POST">
+                            <button> Delete
+                                <!-- <i class="fa fa-trash-o" style="font-size:24px"></i> -->
+                            </button>
+                        </form>
+                        </li>
                     </ul>
                 {% endif %}
                 {% endfor %}
@@ -27,6 +37,17 @@
                 
                 <ul class="lists">
                     <li><a href="/cities/{{city.id}}">{{city.name}}</a></li>
+                    <li>
+                        <button><a href="/cities/{{city.id}}/edit">Edit</a></button>
+                    </li>
+                    <li>
+                        <form action="/cities/{{city.id}}/delete" method ="POST">
+                        <button>
+                                Delete
+                            <!-- <i class="fa fa-trash-o" style="font-size:24px"></i> -->
+                        </button>
+                    </form>
+                    </li>
                 </ul>
                 {% endif %}
                 {% endfor %}

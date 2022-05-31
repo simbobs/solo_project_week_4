@@ -78,7 +78,14 @@ header {
 }
 
 
+.container button {
 
+    text-decoration:none;
+    color: rgb(157, 113, 198);
+    font-family: 'Coming Soon', cursive;
+    display: flex;
+    justify-content: space-between;
+}
 
 
 

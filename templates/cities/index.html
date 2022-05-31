@@ -12,7 +12,7 @@
             {% for city in all_cities %}
             {% if city.visited == True %}
                 <ul class="lists">
-                    <li><a href="/sights/{{city.id}}">{{city.name}}</a>, {{city.country.name}}</li> 
+                    <li><a href="/cities/{{city.id}}">{{city.name}}</a>, {{city.country.name}}</li> 
                     <li>
                         <form action="/cities/{{city.id}}/delete" method ="POST">
                             <button>

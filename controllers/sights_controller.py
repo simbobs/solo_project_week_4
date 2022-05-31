@@ -69,7 +69,7 @@ def update_sight(id):
     updated_sight = Sight(sight_name, sight_comment, city, country)
     sight_repository.update(updated_sight)
     
-    return redirect(f"/cities{city_id}")
+    return redirect(f"/cities/{city_id}")
     
     
     

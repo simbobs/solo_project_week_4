@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="/sights" method="POST">
+<form action="/sights/{{sight.id}}" method="POST">
     <div>
         <label for="sight">Attraction</label>
         <input type="text" id="sight" name="name" placeholder="{{sight.name}}" required autofocus>
@@ -10,7 +10,7 @@
 
     <div>
         <label for="comment">Comments</label>
-        <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+        <textarea name="comment" id="comment" cols="30" rows="10">{{sight.comment}}</textarea>
     </div>
 
     <div>
@@ -18,10 +18,10 @@
         <select id="city" name="city_id">
             <!-- to populate the drop down list -->
             {% for city in cities %}
-            {% if sight.city == city.name%}
-            <option selected = "selected" value="{{city.id}}">{{city.name}}</option>
+            {% if sight.city.name == city.name %}
+                <option selected = "selected" value="{{city.id}}">{{city.name}}</option>
             {% else %}
-            <option value="{{city.id}}">{{city.name}}</option>
+                <option value="{{city.id}}">{{city.name}}</option>
             {% endif %}
             {% endfor %}
 
@@ -32,7 +32,7 @@
         <label for="country">Country</label>
         <select name="country_id" id="country">
             {% for country in countries %}
-            {% if sight.country = country.name %}
+            {% if sight.country.name == country.name %}
             <option selected="selected" value="{{country.id}}">{{country.name}}</option>
             {% else %}
             <option value="{{country.id}}">{{country.name}}</option>
@@ -41,7 +41,7 @@
         </select>
     </div>
 
-    <button type="submit">Add</button>
+    <button type="submit">Update</button>
 </form>
 
 

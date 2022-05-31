@@ -27,12 +27,8 @@
 <!-- THIS IS WHERE YOU NEED HELP -->
         <label for="visited">Visited</label>
         <select id="visited" name ="visited">
-            {% if city.visited == True %}
-            <option selected = "selected" value="1">Yes</option>
-            {% endif %}
-            {% if city.visited == False %}
-            <option selected = "selected" value="0">No</option>
-            {% endif %} 
+            <option value="1">Yes</option>
+            <option value="0">No</option>
         </select>
     </div>
     <button type="submit">Update</button>

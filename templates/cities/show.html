@@ -1,16 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>{{city.name}}</h2>
-<button><a href="/sights//new">Add New Attraction</a></button>
-{% for sight in all_sights %}
 
-<ul>
-<li>{{sight.name}}</li>
-<li>{{sight.comment}}</li>
-</ul>
 
-{% endfor %}
-<p><a href="/cities/{{city.id}}/edit">Edit</a></p>
+<h2 class="headings">{{city.name}}</h2>
+<p><a href="/cities/{{city.id}}/edit">Edit City</a></p>
+
+
+<section class="flexme">
+
+    {% for sight in all_sights %}
+    <div>
+        <h3 class = "headings">{{sight.name}}</h3>
+        <p>{{sight.comment}}</p>
+        <form action="/sights/{{sight.id}}/edit" method = "GET">
+            <button>Edit</button>
+        </form>
+    </div>
+    {% endfor %}
+    
+    <button><a href="/sights/new">Add New Attraction</a></button>
+</section>
 
 {% endblock %}
