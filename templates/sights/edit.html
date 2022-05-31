@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="/sights/{{sight.id}}" method="POST">
+<form class = "forms" action="/sights/{{sight.id}}" method="POST">
     <div>
         <label for="sight">Attraction</label>
         <input type="text" id="sight" name="name" placeholder="{{sight.name}}" required autofocus>

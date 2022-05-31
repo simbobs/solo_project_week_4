@@ -59,6 +59,12 @@ def sights(city):
         sights.append(sight)
     return sights
 
+def get_country_id(id):
+    sql= "SELECT country_id FROM cities WHERE id = ?"
+    values = [id]
+    results = run_sql(sql, values)[0]
+    
+       
 def delete(id):
     sql = "DELETE FROM cities WHERE id = ?"
     values = [id]

@@ -87,5 +87,13 @@ header {
     justify-content: space-between;
 }
 
+.forms {
+    color: rgb(157, 113, 198);
+    font-family: 'Coming Soon', cursive;
+    margin-block-start: 10%;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
 
 

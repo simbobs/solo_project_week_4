@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="/cities" method="POST">
+<form class = "forms" action="/cities" method="POST">
     <div>
         <label for="city">City</label>
         <input type="text" id="city" name="name" placeholder="city" required autofocus>
@@ -14,8 +14,11 @@
         <select id="country" name="country_id">
             <!-- to populate the drop down list -->
             {% for country in all_countries %}
+            {% if selected_country.name == country.name %}
+            <option selected = "selected" value="{{country.id}}">{{country.name}}</option>
+            {% else %}
             <option value="{{country.id}}">{{country.name}}</option>
-          
+            {% endif %}
             {% endfor %}
 
         </select>

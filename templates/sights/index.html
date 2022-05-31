@@ -1,5 +1,15 @@
-{{city.name}}
+{% extends "base.html" %}
 
+{% block content %}
 {% for sight in all_sights %}
 
+<div>
+    {{sight.city.name}}
+
 {{sight.name}}
+
+{{sight.comment}}
+</div>
+{% endfor %}
+
+{% endblock %}

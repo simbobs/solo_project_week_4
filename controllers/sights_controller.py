@@ -10,6 +10,13 @@ import repositories.country_repository as country_repository
 
 sights_blueprint = Blueprint("sights", __name__)
 
+@sights_blueprint.route("/sights", methods = ["GET"])
+def sights():
+    sights = sight_repository.select_all()
+    
+   
+    return render_template("sights/index.html", all_sights = sights)
+
 # @sights_blueprint.route("/sights/<city_id>", methods = ["GET"])
 # def sights(city_id):
 #     sights = sight_repository.select_all()
@@ -31,6 +38,14 @@ def new_sight():
     
     
     return render_template("sights/new.html", cities = cities, sights = sights, countries = countries)
+
+@sights_blueprint.route("/sights/<id>", methods = ["GET"])
+def show_sight(id):
+    countries = country_repository.select_all()
+    cities = city_repository.select_all()
+    sight = sight_repository.select(id)
+    
+    return render_template("cities/show.html", sight = sight, countries = countries, cities = cities)
 
 @sights_blueprint.route("/sights", methods = ["POST"])
 def add_sight():
@@ -60,13 +75,13 @@ def edit_sight(id):
 def update_sight(id):
     sight_name = request.form['name']
     sight_comment = request.form['comment']
-    city_id = request.form ['city_id']
+    city_id = request.form['city_id']
     country_id = request.form['country_id']
     
     city = city_repository.select(city_id)
     country = country_repository.select(country_id)
     
-    updated_sight = Sight(sight_name, sight_comment, city, country)
+    updated_sight = Sight(sight_name, sight_comment, city, country, id)
     sight_repository.update(updated_sight)
     
     return redirect(f"/cities/{city_id}")

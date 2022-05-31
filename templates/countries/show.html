@@ -3,7 +3,7 @@
 {% block content %}
 
 <h2 class="headings">{{country.name}}</h2>
-<form action="/cities/new", method = GET>
+<form action="/countries/{{country.id}}/new", method = GET>
     <button>Add New City</button>
 </form>
 
