@@ -13,17 +13,26 @@
         <select id="country" name="country_id">
             <!-- to populate the drop down list -->
             {% for country in all_countries %}
+            {% if city.country == country.name %}
+            <option selected = "selected" value="{{country.id}}">{{country.name}}</option>
+            {%else%}
             <option value="{{country.id}}">{{country.name}}</option>
+            {% endif %}
             {% endfor %}
 
         </select>
     </div>
 
     <div>
+<!-- THIS IS WHERE YOU NEED HELP -->
         <label for="visited">Visited</label>
         <select id="visited" name ="visited">
-            <option value="1">Yes</option>
-            <option value="0">No</option>
+            {% if city.visited == True %}
+            <option selected = "selected" value="1">Yes</option>
+            {% endif %}
+            {% if city.visited == False %}
+            <option selected = "selected" value="0">No</option>
+            {% endif %} 
         </select>
     </div>
     <button type="submit">Update</button>

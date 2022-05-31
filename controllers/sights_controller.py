@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, Blueprint
+from models import country
 
 from models.city import City
 from models.sight import Sight
@@ -9,12 +10,15 @@ import repositories.country_repository as country_repository
 
 sights_blueprint = Blueprint("sights", __name__)
 
-# @sights_blueprint.route("/sights", methods = ["GET"])
-# def sights():
+# @sights_blueprint.route("/sights/<city_id>", methods = ["GET"])
+# def sights(city_id):
 #     sights = sight_repository.select_all()
-#     return render_template("sights/index.html", sights = sights)
+#     city = city_repository.select(city_id)
+#     all_sights = city_repository.sights(city)
+    
+#     return render_template("sights/index.html", sights = sights, all_sights = all_sights, city = city)
 
-# @sights_blueprint.route()
+# # @sights_blueprint.route()
 
 
 
@@ -36,10 +40,40 @@ def add_sight():
     country_id = request.form['country_id']
     
     city = city_repository.select(city_id)
-    country = city.country
+    country = country_repository.select(country_id)
     
     new_sight = Sight(sight_name, sight_comment, city, country)
     
     sight_repository.save(new_sight)
     
     return redirect(f"/cities/{city_id}")
+
+@sights_blueprint.route("/sights/<id>/edit", methods =["GET"])
+def edit_sight(id):
+    sight = sight_repository.select(id)
+    cities = city_repository.select_all()
+    countries = country_repository.select_all()
+    
+    return render_template("sights/edit.html", sight = sight, cities = cities, countries = countries)
+
+@sights_blueprint.route("/sights/<id>", methods = ["POST"])
+def update_sight(id):
+    sight_name = request.form['name']
+    sight_comment = request.form['comment']
+    city_id = request.form ['city_id']
+    country_id = request.form['country_id']
+    
+    city = city_repository.select(city_id)
+    country = country_repository.select(country_id)
+    
+    updated_sight = Sight(sight_name, sight_comment, city, country)
+    sight_repository.update(updated_sight)
+    
+    return redirect(f"/cities{city_id}")
+    
+    
+    
+    
+
+## this last route had you stumped for ages
+
