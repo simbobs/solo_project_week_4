@@ -60,7 +60,7 @@ def new_city(id):
         cities = city_repository.select_all()
         countries = country_repository.select_all()
         country = country_repository.select(id)
-        return render_template("cities/new.html", all_cities = cities, all_countries = countries, selected_country = country)
+        return render_template("countries/new_city.html", all_cities = cities, all_countries = countries, selected_country = country)
 
 @countries_blueprint.route("/countries/<id>", methods = ["POST"])
 def add_city(id):
