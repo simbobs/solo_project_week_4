@@ -9,7 +9,16 @@ import repositories.country_repository as country_repository
 
 sights_blueprint = Blueprint("sights", __name__)
 
-@sights_blueprint.route("/sight/new", methods = ["GET"])
+# @sights_blueprint.route("/sights", methods = ["GET"])
+# def sights():
+#     sights = sight_repository.select_all()
+#     return render_template("sights/index.html", sights = sights)
+
+# @sights_blueprint.route()
+
+
+
+@sights_blueprint.route("/sights/new", methods = ["GET"])
 def new_sight():
     
     cities = city_repository.select_all()
@@ -19,15 +28,17 @@ def new_sight():
     
     return render_template("sights/new.html", cities = cities, sights = sights, countries = countries)
 
-@sights_blueprint.route("/sight/new/<id>", methods = ["POST"])
+@sights_blueprint.route("/sights", methods = ["POST"])
 def add_sight():
     sight_name = request.form['name']
     sight_comment = request.form['comment']
     city_id = request.form ['city_id']
+    country_id = request.form['country_id']
     
     city = city_repository.select(city_id)
+    country = city.country
     
-    new_sight = Sight(sight_name, sight_comment, city.name)
+    new_sight = Sight(sight_name, sight_comment, city, country)
     
     sight_repository.save(new_sight)
     

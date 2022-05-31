@@ -35,7 +35,7 @@ city_repository.save(city4)
 
 country2.mark_country_visited
 
-sight1 = Sight("Edinburgh Castle", "Very old, very cool", city2)
+sight1 = Sight("Edinburgh Castle", "Very old, very cool", city2, country1)
 sight_repository.save(sight1)
 
 

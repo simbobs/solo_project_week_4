@@ -26,7 +26,12 @@ CREATE TABLE sights (
     name VARCHAR,
     comment TEXT,
     city_id INTEGER NOT NULL,
+    country_id INTEGER NOT NULL,
         FOREIGN KEY (city_id)
-            REFERENCES cities (id)
-)
+            REFERENCES cities (id) ON DELETE CASCADE,
+        FOREIGN KEY (country_id)
+            REFERENCES countries(id) ON DELETE CASCADE
+    
+    
+);
 

@@ -41,9 +41,9 @@ def show_city(id):
     
     # extension, add sights
     
-    sights = city_repository.sights(city)
+    # sights = city_repository.sights(city)
     
-    return render_template("cities/show.html", cities = cities, city = city, all_sights = sights)
+    return render_template("cities/show.html", cities = cities, city = city)
 
 @cities_blueprint.route("/cities/<id>/edit", methods = ["GET"])
 def edit_city(id):

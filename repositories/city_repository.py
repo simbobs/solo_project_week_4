@@ -54,7 +54,8 @@ def sights(city):
     results = run_sql(sql, values)
     
     for row in results:
-        sight = Sight(row['name'], row['comment'], city.name, row['id'])
+        country = country_repository.select(city.country.id)
+        sight = Sight(row['name'], row['comment'], city.name, country, row['id'])
         sights.append(sight)
     return sights
 
