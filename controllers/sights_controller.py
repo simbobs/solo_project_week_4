@@ -86,9 +86,17 @@ def update_sight(id):
     
     return redirect(f"/cities/{city_id}")
     
+    ## this last route had you stumped for ages ^^
     
+    ##THIS IS AN EXTENSION TOO BUT IT WORKS
+@sights_blueprint.route("/sights/<id>/delete", methods = ["POST"])
+def delete_sight(id):
+    
+    sight= sight_repository.select(id)
+    sight_repository.delete(id)
+
+    return redirect(f"/cities/{sight.city.id}")
     
     
 
-## this last route had you stumped for ages
 
