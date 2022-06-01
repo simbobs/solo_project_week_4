@@ -4,7 +4,7 @@
 
 
 <h2 class="headings">{{city.name}}</h2>
-<p><a href="/cities/{{city.id}}/edit">Edit City</a></p>
+<button><a href="/cities/{{city.id}}/edit">Edit City</a></button>
 
 
 <section class="flexme">
@@ -12,14 +12,17 @@
     {% for sight in all_sights %}
     <div>
         <h3 class = "headings">{{sight.name}}</h3>
-        <p>{{sight.comment}}</p>
+        <p id="comments">{{sight.comment}}</p>
         <form action="/sights/{{sight.id}}/edit" method = "GET">
             <button>Edit</button>
         </form>
+        <form action="/sights/{{sight.id}}/delete" method = "POST">
+            <button>Delete</button>
+        </form>
     </div>
     {% endfor %}
-    
     <button><a href="/sights/new">Add New Attraction</a></button>
+    <!-- <button><a href="/cities/{{city.id}}/new">Add New Attraction</a></button> -->
 </section>
 
 {% endblock %}
