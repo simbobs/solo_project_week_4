@@ -1,7 +1,7 @@
 To be able to run the app:
 
 1. In terminal run:
-  sqlite3 db/travel_manager.db > db/travel_manager.sql
+  sqlite3 db/travel_manager.db < db/travel_manager.sql
   
   then:
   python3 console.py
